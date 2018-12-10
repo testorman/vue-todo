@@ -21,10 +21,13 @@ export default {
     },
     methods:{
         addTodo: function(){
-            console.log(this.newTodoItem)
-            // save local logic
-            localStorage.setItem(this.newTodoItem, this.newTodoItem);
-            this.clearInput();
+
+            if (this.newTodoItem !== ''){
+              
+                // 상위 컨포넌트에 이벤트 보내기 this.$emit('이벤트 이름',인자1, 이자2,..)
+                this.$emit('addTodoItem',this.newTodoItem);
+                this.clearInput();
+            }
         },
         clearInput: function(){
             this.newTodoItem = '';
