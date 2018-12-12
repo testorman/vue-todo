@@ -36,7 +36,9 @@ export default {
             if (this.newTodoItem !== ''){
               
                 // 상위 컨포넌트에 이벤트 보내기 this.$emit('이벤트 이름',인자1, 이자2,..)
-                this.$emit('addTodoItem',this.newTodoItem);
+                //this.$emit('addTodoItem',this.newTodoItem);
+                const text = this.newTodoItem.trim() // trim 은 텓스트 앞뒤 공백을 지워준다.
+                this.$store.commit('addOneItem', text);
                 this.clearInput();
             }else{
                 this.showModal = !this.showModal;
@@ -47,7 +49,7 @@ export default {
         }
     },
     components: {
-        Modal: Modal
+        Modal
     }
 
 }
